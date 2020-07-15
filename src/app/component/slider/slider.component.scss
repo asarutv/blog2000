@@ -1,0 +1,48 @@
+// app.component.scss
+
+$backColor: black;
+$tuzert: normal;
+$teghzi: 40px;
+
+$tehri: ($teghzi / (4/3));
+
+
+.search-button {
+    border-color: yellow;
+    color: blue;
+
+    &:hover, &:after, &:focus {
+        background-color: transparent;
+        color: $backColor;
+    }
+}
+.brand-custom {
+    &:hover, &:focus, &:active {
+        background-color: transparent;
+        color:$backColor;
+    }
+}
+
+.login-custom {
+    &:hover, &:focus, &:active {
+        background-color: transparent;
+        color:$backColor !important;
+    }
+}
+
+.register-custom {
+    &:hover, &:focus, &:active {
+        background-color: transparent;
+        color:$backColor !important;
+    }
+}
+p {
+    
+font-weight: $tuzert;
+font-size: $teghzi;
+    
+}
+
+h1 {
+    font-size: $tehri;
+}

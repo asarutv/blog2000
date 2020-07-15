@@ -1,0 +1,214 @@
+
+
+
+.modale {
+    background-color: black;
+    width: 100%;
+    min-height: 550px ;
+    position: relative;
+    top:-60px;
+    left: 0;
+    color: white;
+    z-index:-1;
+}
+
+
+
+
+
+///////////////////////////////////////////////////
+$duration : 450ms;
+$tileWidth : 260px;
+$tileHeight : ($tileWidth / (16/9));
+$iconSize : 50px;
+$growFactor : 1.45;
+
+$moveLeft : -($tileWidth * ($growFactor - 1) / 2);
+$moveRight : $tileWidth * ($growFactor - 1);
+
+
+* { box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+}
+
+a:link
+a:hover
+a:active
+a:visited{
+  transition: color 150ms;
+  color: #95a5a6;
+  text-decoration: none;
+}
+a:hover{
+  color: #7f8c8d;
+  text-decoration: underline;
+}
+
+
+/////////////////// MIX SLIDER ////////////////////
+.contain{
+  width: 100%;
+
+  background-color: #000000;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .btn {
+    width: 40px;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+        &.prev {
+            left: 0px;
+        }
+    }
+    &.next{
+        right: 0px;
+    }
+}
+
+.slider-container{
+    // transition: margin-left .2s ease, left .5s ease;
+    // position: absolute;
+    // left: 0;
+    .slide {
+        background-color: #f00;
+        float: left;
+        position: relative;
+        top: 0;
+        transition: width .2s ease, height .2s ease, top .2s ease;
+        &:nth-child(even){
+            background-color: blue;
+        }
+    }
+}
+
+
+///////////////////////////////// SLIDER NETFLIX /////////////////
+
+.row{
+  overflow: hidden;
+  
+}
+.row__inner{
+  transition: margin-left .2s ease, left .5s ease;
+  position: relative;
+  left: 0;
+  ///////
+  
+  transition: $duration transform;
+  font-size: 0;
+  white-space: nowrap;
+  
+  margin: ($tileHeight / 3) 0;
+  padding-left: 40px;
+}
+.tile{
+  position: relative;
+  display: inline-block;
+  width: $tileWidth;
+  height: $tileHeight;
+  margin-right: 0px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: $duration all;
+  transform-origin: center left;
+}
+.tile__img{
+  width: $tileWidth;
+  height: $tileHeight;
+  object-fit: cover;
+}
+
+.tile__title {
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  
+}
+
+.tile__outils {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 3px;
+    color: #ffffff;
+    width: 30px;
+    height: 65%;
+}
+
+.tile__outils i {
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+.tile__chevron {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left:-40px;
+
+    width: 80px;
+    height: 16px;
+    margin-bottom:2px;
+    text-align: center;
+}
+
+.tile__player {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    
+    bottom: 40%;
+    left: 8px;
+    margin:0px;
+    border: 1px solid white;
+    border-radius:100% ;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+
+.row__inner:hover {
+  transform: translate3d($moveLeft, 0, 0);
+}
+
+.row__inner:hover .tile {
+  opacity: .3;
+
+  &:hover {
+    transform: scale($growFactor);
+    opacity: 1;
+    }
+}
+.tile:hover ~ .tile{
+  transform: translate3d($moveRight, 0, 0);
+}
+
+.tile__details {
+    position: absolute;
+    border: 1px solid #999999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-size: 10px;
+    opacity: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    transition: $duration opacity;
+    
+    .tile:hover & {
+    opacity: 1;
+    }
+
+}
